@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Falcão BarberShop - Premium Design System */
+
+@layer base {
+  :root {
+    /* Core Brand Colors */
+    --background: 0 0% 0%;
+    --foreground: 43 29% 90%;
+    
+    --card: 0 0% 7%;
+    --card-foreground: 43 29% 90%;
+    
+    --popover: 0 0% 5%;
+    --popover-foreground: 43 29% 90%;
+    
+    /* Gold - Premium/Luxury */
+    --primary: 43 74% 52%;
+    --primary-foreground: 0 0% 0%;
+    
+    /* Dark surfaces */
+    --secondary: 0 0% 11%;
+    --secondary-foreground: 43 29% 90%;
+    
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+    
+    /* Accent - Old Gold */
+    --accent: 43 76% 38%;
+    --accent-foreground: 0 0% 0%;
+    
+    /* Dark Red - Classic Barber */
+    --destructive: 0 100% 27%;
+    --destructive-foreground: 43 29% 90%;
+    
+    --border: 0 0% 18%;
+    --input: 0 0% 15%;
+    --ring: 43 74% 52%;
+    
+    --radius: 0.5rem;
+    
+    /* Extended Palette */
+    --gold: 43 74% 52%;
+    --gold-light: 43 80% 65%;
+    --gold-dark: 43 76% 38%;
+    --dark-red: 0 100% 27%;
+    --charcoal: 0 0% 11%;
+    --cream: 60 56% 91%;
+    
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(43 74% 52%), hsl(43 76% 38%));
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 0%), hsl(0 0% 7%));
+    --gradient-hero: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.9) 100%);
+    
+    /* Shadows */
+    --shadow-gold: 0 4px 30px -5px hsla(43, 74%, 52%, 0.3);
+    --shadow-elegant: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    
+    /* Sidebar */
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 43 29% 90%;
+    --sidebar-primary: 43 74% 52%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 11%;
+    --sidebar-accent-foreground: 43 29% 90%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 43 74% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .font-elegant {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  
+  .font-display {
+    font-family: 'Oswald', sans-serif;
+  }
+}
+
+@layer components {
+  /* Gold Text Gradient */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, hsl(43 74% 52%), hsl(43 80% 65%), hsl(43 74% 52%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Gold Border Glow */
+  .border-gold-glow {
+    border: 1px solid hsl(43 74% 52% / 0.5);
+    box-shadow: 0 0 20px hsl(43 74% 52% / 0.15), inset 0 0 20px hsl(43 74% 52% / 0.05);
+  }
+  
+  /* Premium Button Styles */
+  .btn-gold {
+    @apply relative overflow-hidden bg-primary text-primary-foreground font-display font-semibold uppercase tracking-wider;
+    @apply px-8 py-4 transition-all duration-300;
+    @apply hover:shadow-[0_4px_30px_-5px_hsla(43,74%,52%,0.5)] hover:scale-105;
+  }
+  
+  .btn-gold::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    @apply -translate-x-full transition-transform duration-500;
+  }
+  
+  .btn-gold:hover::before {
+    @apply translate-x-full;
+  }
+  
+  .btn-outline-gold {
+    @apply border-2 border-primary text-primary bg-transparent font-display font-semibold uppercase tracking-wider;
+    @apply px-8 py-4 transition-all duration-300;
+    @apply hover:bg-primary hover:text-primary-foreground;
+  }
+  
+  /* Card Hover Effect */
+  .card-hover {
+    @apply transition-all duration-500;
+    @apply hover:border-primary/50 hover:shadow-[0_0_30px_hsla(43,74%,52%,0.15)];
+    @apply hover:-translate-y-1;
+  }
+  
+  /* Barber Pole Animation */
+  .barber-pole {
+    background: repeating-linear-gradient(
+      45deg,
+      #8B0000,
+      #8B0000 10px,
+      #fff 10px,
+      #fff 20px,
+      #1e3a8a 20px,
+      #1e3a8a 30px
+    );
+    background-size: 60px 60px;
+    animation: barber-pole-spin 2s linear infinite;
+  }
+  
+  @keyframes barber-pole-spin {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 0 60px;
+    }
+  }
+  
+  /* Section Divider */
+  .section-divider {
+    @apply w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto;
+  }
+  
+  /* Shine effect on hover */
+  .shine-effect {
+    @apply relative overflow-hidden;
+  }
+  
+  .shine-effect::after {
+    content: '';
+    @apply absolute top-0 -left-full w-full h-full;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+  }
+  
+  .shine-effect:hover::after {
+    left: 100%;
+  }
+  
+  /* Gold underline animation */
+  .gold-underline {
+    @apply relative;
+  }
+  
+  .gold-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+  
+  .gold-underline:hover::after {
+    @apply w-full;
+  }
+  
+  /* Premium Input */
+  .input-premium {
+    @apply bg-secondary border border-border rounded-sm px-4 py-3;
+    @apply text-foreground placeholder:text-muted-foreground;
+    @apply focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none;
+    @apply transition-all duration-300;
+  }
+  
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(0 0% 5%);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(43 74% 52% / 0.3);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(43 74% 52% / 0.5);
+  }
+}
+
+@layer utilities {
+  .text-shadow-gold {
+    text-shadow: 0 0 40px hsla(43, 74%, 52%, 0.3);
+  }
+  
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+  }
+}
